@@ -1,0 +1,158 @@
+.effect_query {
+    border:3px solid red;
+    
+    border-radius:7px;
+    
+}
+.w3-bar{
+    background-image: url("home_bg.png");
+    position:fixed;
+    left:0%;
+    width:100%;
+    
+}
+.nav {
+    background-image: url("home_bg.png");}
+.navbar-right {
+    background-image: url("home_bg.png");}
+.thick-green-border {
+    border-color: green;
+    border-width: 6px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+  img{
+      position:relative;
+      height:100%;
+  }
+.social{
+    opacity:1.0;
+}
+.effect{
+  border-radius: 7px;                          
+}
+.mydiv_red{
+    position:absolute;
+    background-image: url("home_bg.png");
+
+height:30%;
+left:0%;
+width:100%;
+}
+.mydiv_blue{
+background-color:#08315F;
+border-radius: 7px;
+position: absolute;
+height:80%;
+width:96%;
+top: 25%;
+left:2.5%;
+right: 3%;
+}
+
+
+.mydiv-elem1{
+background-color:white;
+
+position: absolute;
+height:38%;
+width:23%;
+top: 10%;
+left:7%;
+
+}
+.mydiv-elem2{
+background-color:white;
+
+position: absolute;
+height:38%;
+width:23%;
+top: 10%;
+left:37%;
+
+}
+.mydiv-elem3{
+background-color:white;
+
+position: absolute;
+height:38%;
+width:23%;
+top: 10%;
+left:67%;
+
+}
+.mydiv-elem4{
+background-color:white;
+
+position: absolute;
+height:38%;
+width:23%;
+top: 58%;
+left:7%;
+
+}
+.mydiv-elem5{
+background-color:white;
+
+position: absolute;
+height:38%;
+width:23%;
+top: 58%;
+left:37%;
+
+}
+.mydiv-elem6{
+background-color:white;
+
+position: absolute;
+height:38%;
+width:23%;
+top: 58%;
+left:67%;
+}
+.div-footer{
+    background-color:lightgray;
+position: absolute;
+height:15%;
+left:0%;
+top:120%;
+width:100%;
+}
+.txt-center{
+    text-align: center;
+    position: relative;
+    top:42%;
+}
+.inner-text{
+    color: black;
+    position: absolute;
+    top:72%;
+    left: 8%;
+}
+.inner-icon{
+    position: absolute;
+    top:9%;
+    left:82%;
+}
+
+.nav-right{
+    float: right;
+    top: 10%;
+}
+/*div.mydiv-elem6:hover{*/
+    /*background-color:gray;*/    
+    /*color:white;*/
+      /* you may delete this if you want */
+/*}*/
+.status-textl{
+    color: white;
+    position:absolute;
+    left:2.5%;
+    top:70%; 
+}
+.status-textr{
+    color: white;
+    position:absolute;
+    left:68%;
+    top:70%; 
+}

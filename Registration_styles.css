@@ -1,0 +1,8 @@
+﻿.error {
+    color: red;
+    /*display: inline-flex;*/
+}
+
+.hidden {
+    visibility: hidden;
+}
