@@ -1,0 +1,160 @@
+INSERT INTO tbl_FlightLists
+           
+     VALUES('AX567', 'Kolkata', 'Chennai',124,124,2677,'2019-01-21','8:00'), ('AX123', 'Kolkata', 'Hyderabad',124,124,2046,'2019-01-22','15:10'),('AX345', 'Kolkata', 'Mumbai',124,29,2899,'2019-01-23','19:10'),
+	 ('BX098', 'Kolkata', 'Chennai',124,110,1987,'2019-01-21','14:00'),('BX777', 'Kolkata', 'Mumbai',124,108,2543,'2019-01-22','6:25'),('CX567', 'Kolkata', 'Hyderabad',124,45,1977,'2019-01-23','11:50'),
+	 ('ZX561', 'Chennai', 'Kolkata',100,67,3877,'2019-01-22','9:00'),('RX523', 'Chennai', 'Mumbai',124,98,2999,'2019-01-23','11:10'),('TYX008', 'Chennai', 'Hyderabad',146,129,2077,'2019-01-24','10:30'),
+  ('WR561', 'Chennai', 'Kolkata',100,17,3177,'2019-01-22','20:10'),('ED113', 'Chennai', 'Mumbai',144,118,2199,'2019-01-23','15:20'),('UY808', 'Chennai', 'Hyderabad',96,29,2977,'2019-01-24','5:10'),
+  ('BX112', 'Mumbai', 'Kolkata',90,67,4077,'2019-01-24','13:20'),('BH708', 'Mumbai', 'Chennai',114,08,2099,'2019-01-25','7:10'),('NN444', 'Mumbai', 'Hyderabad',106,39,3577,'2019-01-26','16:50'),
+  ('BX076', 'Mumbai', 'Kolkata',130,117,3272,'2019-01-24','18:40'),('UM111', 'Mumbai', 'Chennai',124,68,2989,'2019-01-25','17:30'),('CV908', 'Mumbai', 'Hyderabad',76,29,3877,'2019-01-26','22:10'),
+  ('WT561', 'Hyderabad', 'Kolkata',60,07,4877,'2019-01-26','11:00'),('ED110', 'Hyderabad', 'Mumbai',114,98,3699,'2019-01-27','5:00'),('OL890', 'Hyderabad', 'Chennai',46,19,2177,'2019-01-28','20:20'),
+  ('UZ561', 'Hyderabad', 'Kolkata',80,67,4477,'2019-01-26','15:10'),('YT733', 'Hyderabad', 'Mumbai',124,68,1999,'2019-01-27','14:50'),('WM277', 'Hyderabad', 'Chennai',106,29,1877,'2019-01-28','11:30')
+  
+  
+ 
+
+INSERT INTO [dbo].[tbl_states]
+VALUES
+(1,'Andhra,Pradesh',1),
+(2,'Arunachal,Pradesh',1),
+(3,'Assam',1),
+(4,'Bihar',1),
+(5,'Chhattisgarh',1),
+(6,'Goa',1),
+(7,'Gujarat',1),
+(8,'Haryana',1),
+(9,'Himachal Pradesh',1),
+(10,'Jammu,and,Kashmir',1),
+(11,'Jharkhand',1),
+(12,'Karnataka',1),
+(13,'Kerala',1),
+(14,'MadhyaPradesh',1),
+(15,'Maharashtra',1),
+(16,'Manipur',1),
+(17,'Meghalaya',1),
+(18	,'Mizoram',1),
+(19	,'Nagaland',	1),
+(20	,'Odisha',1),
+(21	,'Punjab',	1),
+(22	,'Rajasthan',1),
+(23	,'Sikkim',	1),
+(24,'Tamil Nadu',1),
+(25	,'Telangana',	1),
+(26	,'Tripura',1),
+(27	,'Uttar,Pradesh',	1),
+(28,'Uttarakhand',1),
+(29,'West Bengal',	1),
+(30,'Andaman and Nicobar Islands',	1),
+(31	,'Chandigarh',1),
+(32	,'Dadra and Nagar Haveli',1),
+(33	,'Daman and Diu',1),
+(34	,'Delhi',1),
+(35	,'Lakshadweep',	1),
+(36	,'Pondicherry',	1),
+(37	,'New South,Wales',2),
+(38	,'Queensland',2),
+(39	,'South Australia',	2),
+(40,'Tasmania',2),
+(41	,'Victoria',	2),
+(42	,'Western Australia',	2),
+(43	,'Australian Capital Territory',	2),
+(44	,'Northern Territory',2),
+(45	,'Kandy',	3),
+(46	,'Trincomalee',	3),
+(47	,'Anuradhapura',	3),
+(48,'Jaffna',3),
+(49	,'Kurunegala',	3),
+(50,'Northland',4),
+(51	,'Auckland',	4),
+(52,'Waikato',4),
+(53	,'Bay of Plenty',4),
+(54	,'Hawke Bay',	4),
+(55	,'Alabama',5),
+(56	,'California',5),
+(57,'Florida',5),
+(58,'Georgia',5),
+(59,'New,Jersey',5),
+(60,'Sheffield',6),
+(61,'Manchester',6),
+(62,'Leeds',6),
+(63,'Liverpool',6),
+(64,'London',6)
+GO
+
+ALTER PROCEDURE [dbo].[add_user] 
+			@fname nvarchar(50),@lname nvarchar(50),@mobile_number nchar(10),@userid nvarchar(50),
+				@country nvarchar(50),@state nvarchar(50),@password nvarchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	if exists(select user_id from User_table where user_id=@userid)
+	return 1;
+	else 
+		insert into User_table (user_id	,first_name,last_name,user_contactnumber,user_country,user_state,user_password) values(@userid,@fname,@lname,@mobile_number,@country,@state,@password);
+		 
+END
+
+
+ALTER PROCEDURE [dbo].[country_list]
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT * from tbl_country;
+END
+
+
+ALTER PROCEDURE [dbo].[getAuthorisedAdmin] 
+	-- Add the parameters for the stored procedure here
+	@admin_id nchar(50),@admin_password nchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	if exists (select  * from dbo.tbl_admin where admin_id= @admin_id and admin_password=@admin_password)
+    return 1;
+else
+   return 0;
+END
+
+
+ ALTER PROCEDURE [dbo].[search_flight]
+	-- Add the parameters for the stored procedure here
+	@source nchar(50),@destination nchar(50),@date_of_journey date
+AS
+BEGIN
+	
+
+    -- Insert statements for procedure here
+	SELECT flight_no,flight_source,flight_destination,seat_available,total_fare,flight_time,flight_duration from dbo.FlightLists where 
+	flight_source=@source and flight_destination=@destination and flight_date=@date_of_journey  and seat_available>0;
+END
+
+ALTER PROCEDURE [dbo].[user_info]
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT * from User_table;
+END
+-- =============================================
+CREATE PROCEDURE getAuthorisedUser
+
+@user_id nchar(50),@user_password nchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	if exists (select  * from dbo.User_table where user_id= @user_id and user_password=@user_password)
+    return 1;
+else
+   return 0;
+END
+GO
+
